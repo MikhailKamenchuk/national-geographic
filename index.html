@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+	<title>National Geographic</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+	<link href="styles/jquery.rating.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.bxslider.min.js" ></script>
+	<script type="text/javascript" src="js/jquery.rating-2.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#all").click(function () {
+				 if (!$("#all").is(":checked"))
+					$(".category-column input[type=checkbox]").removeAttr("checked");
+				else
+					$(".category-column input[type=checkbox]").attr("checked","checked");
+			});
+			$('.slide-box').bxSlider({
+				  mode: 'horizontal',
+				  controls: false,
+				  autoControls: true,
+				  auto: true,
+				  autoControlsCombine: true
+			});
+			$('.rating-news').rating({
+				fx: 'float',
+				image: 'images/stars.png',
+				loader: 'images/ajax-loader.gif',
+				minimal: 0.6,
+				url: 'rating.php',
+				callback: function(responce){
+					
+					this.vote_success.fadeOut(2000);
+					if(responce.msg) alert(responce.msg);
+				}
+			});
+			$('.rating-product').rating({
+				fx: 'float',
+				image: 'images/stars.png',
+				loader: 'images/ajax-loader.gif',
+				minimal: 0.6,
+				url: 'rating.php',
+				callback: function(responce){
+					
+					this.vote_success.fadeOut(2000);
+					if(responce.msg) alert(responce.msg);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="header">
+		<div id="header-inner">
+			<div class="header">
+				<h1 id="logo"> National Geographic </h1>
+				<div class="search">
+					<form>
+						<input type="image" src="images/search.png">
+						<input type="text" value="Search" name="q">
+						<span class="categories-normal"> All Categories</span>
+						<input type="submit" value="Отправить" id="submit">	
+						<div class="categories-active">
+							<div class="select-menu">
+								<span> Videos, Trave.. </span>
+							</div>
+							<div class="subcategory">
+								<div class="select-all">
+									<input id="all" type="checkbox" name="all"/>
+									<label for="all">Select all categories to search</label>
+								</div>
+								<div class="category-column first">
+									<ul>                
+										<li>
+											<input id="videos" type="checkbox" name="videos"/>
+											<label for="videos">Videos</label>
+										</li>
+										<li>
+											<input id="photography" type="checkbox" name="photography"/>
+											<label for="photography">Photography</label>
+										</li>
+										<li>
+											<input id="animals" type="checkbox" name="animals"/>
+											<label for="animals">Animals</label>
+										</li>
+										<li>
+											<input id="games" type="checkbox" name="games"/>
+											<label for="games">Games</label>
+										</li>
+									</ul>
+								</div>
+								<div class="category-column">
+									<ul>                
+										<li>
+											<input id="environment" type="checkbox" name="environment"/>
+											<label for="environment">Environment</label>
+										</li>
+										<li>
+											<input id="travel" type="checkbox" name="travel"/>
+											<label for="travel">Travel</label>
+										</li>
+										<li>
+											<input id="kids" type="checkbox" name="kids"/>
+											<label for="kids">Kids</label>
+										</li>
+										<li>
+											<input id="adventurer" type="checkbox" name="adventurer"/>
+											<label for="adventurer">Adventurer</label>
+										</li>
+									</ul>
+								</div>
+								<div class="category-column last">
+									<ul>                
+										<li>
+											<input id="television" type="checkbox" name="television"/>
+											<label for="television">Television</label>
+										</li>
+										<li>
+											<input id="apps" type="checkbox" name="apps"/>
+											<label for="apps">Apps</label>
+										</li>
+										<li>
+											<input id="events" type="checkbox" name="events"/>
+											<label for="events">Events</label>
+										</li>
+										<li>
+											<input id="trips" type="checkbox" name="trips"/>
+											<label for="trips">Trips</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="authorization">
+					<a href="#" class="sign-up">					 
+						<img border="0" src="images/sign-up.png" />
+						<span>SignUp</span>
+					</a>
+					<i class="separator"></i>
+					<a href="#" class="login">					 
+						<img border="0" src="images/login.png" />
+						<span>Login</span>
+					</a>
+				</div>
+			</div>
+			<nav class="main-menu">
+				<ul id="menu-main" class="menu">
+					<li id="menu-item-1" class="menu-item-1">
+						<a href="#">
+							<i></i>
+							<span>HOME</span>
+						</a>
+					</li>
+					<li id="menu-item-2" class="menu-item-2">
+						<a href="#">
+							<i></i>
+							<span>Photography</span>
+						</a>
+					</li>
+					<li id="menu-item-3" class="menu-item-3">
+						<a href="#">
+							<i></i>
+							<span>Video</span>
+						</a>
+					</li>
+					<li id="menu-item-4" class="menu-item-4">
+						<a href="#">
+							<i></i>
+							<span>Environment</span>
+						</a>
+					</li>
+					<li id="menu-item-5" class="menu-item-5">
+						<a href="#">
+							<i></i>
+							<span>Travel</span>
+						</a>
+					</li>
+					<li id="menu-item-6" class="menu-item-6">
+						<a href="#">
+							<i></i>
+							<span>Adventure</span>
+						</a>
+					</li>
+					<li id="menu-item-7" class="menu-item-7">
+						<a href="#">
+							<i></i>
+							<span>Television</span>
+						</a>
+					</li>
+					<li id="menu-item-8" class="menu-item-8">
+						<a href="#">
+							<i></i>
+							<span>Kids</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>	
+	</div>
+	<section id="content">
+		<div id="content-inner">
+			<div class="left-bar">
+				<div class="menu-bar">
+					<a href="#">
+							<i id="mb-item-1"></i>
+							<span>Daily News</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-2"></i>
+							<span>Magazine</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-3"></i>
+							<span>Maps</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-4"></i>
+							<span>Science</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-5"></i>
+							<span>Education</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-6"></i>
+							<span>Games</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-7"></i>
+							<span>Events</span>
+					</a>
+					<a href="#">
+							<i  id="mb-item-8"></i>
+							<span>Blogs</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-9"></i>
+							<span>Explorers</span>
+					</a>
+					<a href="#">
+							<i id="mb-item-10"></i>
+							<span>Trips</span>
+					</a>
+				</div>
+				<div class="center-bar">
+					<div class="filter">
+							<a href="#">Home</a>
+							<a href="#">Animals</a>
+							<a href="#">Ancient</a>
+							<a href="#">Energy</a>
+							<a href="#">Environment</a>
+							<a href="#">Travel</a>
+					</div>
+					<ul class="slide-box">
+						<li class="slide">
+							<img src="images/banner-1.png" alt="Фото">
+							<div class="description">
+								<dl>
+									<dt>Lion Cubs Playing</dt>
+									<dd>African lion cubs play in the grass in the Okavango Delta.</dd>
+								</dl>
+							</div>
+						</li>
+						<li class="slide">
+							<img src="images/banner-2.png" alt="Фото">
+							<div class="description">
+								<dl>
+									<dt>Cuba travel specialists</dt>
+									<dd>Learn how Americans can travel to Cuba legally.</dd>
+								</dl>
+							</div>
+						</li>
+						<li class="slide">
+							<img src="images/banner-3.png" alt="Фото">
+							<div class="description">
+								<dl>
+									<dt>Zebras Cubs Playing</dt>
+									<dd>Learn all you wanted to know about zebras.</dd>
+								</dl>
+							</div>
+						</li>
+					</ul>
+					<div class="title-set">
+						<div class="latest-news">Latest News</div>
+						<div class="most-category">Most Resent</div>
+						<div class="most-categories-active">
+							<span>Most Resent</span>
+							<a href="#">Most Viewd</a>
+							<a href="#">Most Recent</a>
+							<a href="#">Most Discussed</a>
+							<a href="#">Most Rated</a>
+						</div>
+						<div class="view-news">
+							<a href="#" class="list-view">list</a>
+							<a href="#" class="grid-view">grid</a>
+						</div>
+					</div>
+				</div>
+				<div class="news">
+					<div class="news-item">
+						<div class="fresh-news">
+							<div class="logo-fresh-news">
+								<img src="images/fresh-news-1.png" alt="Фото">
+							</div>
+							<div class="title-news">
+								<p>African Lion Cub</p>
+								<span>3 hours ago</span>
+							</div>
+							<div class="rating-news">
+								<input type="hidden" name="val" value="3.75"/>
+								<input type="hidden" name="votes" value="5"/>
+								<input type="hidden" name="vote-id" value="3"/>
+								<input type="hidden" name="cat_id" value="2"/>
+							</div>
+						</div>
+						<p>
+							An African lion cub rests in the tall grasses of Botswana’s Okavango Delta. Once ranging across the African continent and into Syria, Israel, Iraq, Pakistan, Iran, and even northwest India, lions have declined to as few as 20,000 animals from about 450,000 just 50 years ago.
+						</p>
+					</div>
+					<div class="news-item">
+						<div class="fresh-news">
+							<div class="logo-fresh-news">
+								<img src="images/fresh-news-2.png" alt="Фото">
+							</div>
+							<div class="title-news">
+								<p>Young Mountain Gorilla</p>
+								<span>5 hours ago</span>
+							</div>
+							<div class="rating-news">
+								<input type="hidden" name="val" value="3.75"/>
+								<input type="hidden" name="votes" value="5"/>
+								<input type="hidden" name="vote-id" value="3"/>
+								<input type="hidden" name="cat_id" value="2"/>
+							</div>
+						</div>
+						<p>
+							This young mountain gorilla, named Kwibesha, is a member of the Kabrizi family of gorillas in Virunga National Park. Wildlife rangers in the park have had to suspend their monitoring of the gorillas because rebel militias and the Congolese army occupy much of their habitat.
+						</p>
+					</div>
+					<div class="news-item">
+						<div class="fresh-news">
+							<div class="logo-fresh-news">
+								<img src="images/fresh-news-3.png" alt="Фото">
+							</div>
+							<div class="title-news">
+								<p>King Penguins</p>
+								<span>8 hours ago</span>
+							</div>
+							<div class="rating-news">
+								<input type="hidden" name="val" value="3.75"/>
+								<input type="hidden" name="votes" value="5"/>
+								<input type="hidden" name="vote-id" value="3"/>
+								<input type="hidden" name="cat_id" value="2"/>
+							</div>
+						</div>
+						<p>
+							King penguins live on the more temperate islands north of Antarctica. Although their habitat is warmer than that of emperor penguins, king penguins have four layers of feathers and huddle together for warmth.
+						</p>
+					</div>
+					<div class="news-item">
+						<div class="fresh-news">
+							<div class="logo-fresh-news">
+								<img src="images/fresh-news-4.png" alt="Фото">
+							</div>
+							<div class="title-news">
+								<p>Great White Shark</p>
+								<span>1 days ago</span>
+							</div>
+							<div class="rating-news">
+								<input type="hidden" name="val" value="3.75"/>
+								<input type="hidden" name="votes" value="5"/>
+								<input type="hidden" name="vote-id" value="3"/>
+								<input type="hidden" name="cat_id" value="2"/>
+							</div>
+						</div>
+						<p>
+							The legendary great white shark is far more fearsome in our imaginations than in reality. As scientific research on these elusive predators increases, their image as mindless killing machines is beginning to fade.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="right-bar">
+				<div class="most-popular-news">
+					<div class="icon-news"></div>
+					<div>Most Popular News</div>
+				</div>
+				<div class="top-news">
+					<div class="logo-top-news">
+						<img src="images/top-news-1.png" alt="Фото">
+					</div>
+					<div class="title-news">
+						<p>The Bite That Heals</p>
+						<span>6 days ago</span>
+					</div>
+					<div class="rating-news">
+						<input type="hidden" name="val" value="3.75"/>
+						<input type="hidden" name="votes" value="5"/>
+						<input type="hidden" name="vote-id" value="3"/>
+						<input type="hidden" name="cat_id" value="2"/>
+					</div>
+				</div>
+				<div class="top-news">
+					<div class="logo-top-news">
+						<img src="images/top-news-2.png" alt="Фото">
+					</div>
+					<div class="title-news">
+						<p>Stranger Than Nature</p>
+						<span>8 days ago</span>
+					</div>
+					<div class="rating-news">
+						<input type="hidden" name="val" value="3.75"/>
+						<input type="hidden" name="votes" value="5"/>
+						<input type="hidden" name="vote-id" value="3"/>
+						<input type="hidden" name="cat_id" value="2"/>
+					</div>
+				</div>
+				<div class="most-popular-videos">
+					<div class="icon-videos"></div>
+					<div>Most Popular Videos</div>
+				</div>
+				<div class="video"></div>
+				<div class="video"></div>
+				<div class="upcoming-events">
+					<div class="icon-event"></div>
+					<div class="description-event">Upcoming Events</div>
+					<div class="pagination-events">
+						<a href="#" class="previous">previous</a>
+						<a href="#" class="next">next</a>
+					</div>
+				</div>
+				<div class="event">
+					<div class="event-name">NatGeo Live Student Matinees</div>
+					<div class="logo-events">
+						<img src="images/top-events-1.png" alt="Фото">
+					</div>
+					<div class="date-event">April 17,2013</div>
+					<div class="text-event">
+						Live Student Matinees offer students in USA and Canada entertaining and visually spec-tacular presentations by leading explorers
+					</div>
+				</div>
+				<div class="shopsub">
+					<a href="#" class="shopping">
+						<div class="icon-shopping"></div>
+						<div>SHOPPING</div>
+					</a>
+					<a href="#" class="subscription">
+						<div class="icon-sub"></div>
+						<div>SUBSCRIPTION</div>
+					</a>
+				</div>
+			</div>
+			<div class="separator"></div>
+			<div class="magazine">
+				<div class="pagination-magazine">
+					<div class="icon-pag"></div>
+					<div class="description-pag">National Geographic Magazines</div>
+					<div class="pagination">
+						<a href="#" class="previous">previous</a>
+						<a href="#" class="next">next</a>
+					</div>
+				</div>
+				<div class="products">
+					<div class="product">
+						<div class="product-link">
+							<a href="#">
+								<div class="product-logo">
+									<img src="images/product-oil.png">
+								</div>
+								<span>National Geographic Magazine</span>
+							</a>
+						</div>
+						<div class="rating-product">
+							<input type="hidden" name="val" value="3.75"/>
+							<input type="hidden" name="votes" value="5"/>
+							<input type="hidden" name="vote-id" value="3"/>
+							<input type="hidden" name="cat_id" value="2"/>
+						</div>
+						<div  class="subscribe"> 
+							<a href="#">
+								<div class="icon-subscribe"></div>
+								<div class="text">SUBSCRIBE</div>
+							</a>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-link">
+							<a href="#">
+								<div class="product-logo">
+									<img src="images/product-forkids.png">
+								</div>
+								<span>National Geographic Kids Magazine</span>
+							</a>
+						</div>
+						<div class="rating-product">
+							<input type="hidden" name="val" value="3.75"/>
+							<input type="hidden" name="votes" value="5"/>
+							<input type="hidden" name="vote-id" value="3"/>
+							<input type="hidden" name="cat_id" value="2"/>
+						</div>
+						<div  class="subscribe"> 
+							<a href="#">
+								<div class="icon-subscribe"></div>
+								<div class="text">SUBSCRIBE</div>
+							</a>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-link">
+							<a href="#">
+								<div class="product-logo">
+									<img src="images/product-lemurs.png">
+								</div>
+								<span>NG Young Explorer Magazine</span>
+							</a>
+						</div>
+						<div class="rating-product">
+							<input type="hidden" name="val" value="3.75"/>
+							<input type="hidden" name="votes" value="5"/>
+							<input type="hidden" name="vote-id" value="3"/>
+							<input type="hidden" name="cat_id" value="2"/>
+						</div>
+						<div  class="subscribe"> 
+							<a href="#">
+								<div class="icon-subscribe"></div>
+								<div class="text">SUBSCRIBE</div>
+							</a>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-link">
+							<a href="#">
+								<div class="product-logo">
+									<img src="images/product-polarbears.png">
+								</div>
+								<span>National Geographic Little</span>
+							</a>
+						</div>
+						<div class="rating-product">
+							<input type="hidden" name="val" value="3.75"/>
+							<input type="hidden" name="votes" value="5"/>
+							<input type="hidden" name="vote-id" value="3"/>
+							<input type="hidden" name="cat_id" value="2"/>
+						</div>
+						<div  class="subscribe"> 
+							<a href="#">
+								<div class="icon-subscribe"></div>
+								<div class="text">SUBSCRIBE</div>
+							</a>
+						</div>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="footer-inner">
+			<form name="mail" method="post" action="mailto:ваша_почта">
+				<input type="subscribe" value="type your email" id="submit">
+				<input type="submit" value="SUBSCRIBE" id="submit">
+			</form>
+			<div class="media">
+				<a href="#" name="facebook" class="facebook">facebook</a>
+				<a href="#" name="twitter" class="twitter">twitter</a>
+				<a href="#" name="youtube" class="youtube">youtube</a>
+			</div>
+			<div class="copyright">
+				<ul>
+					<li>
+						<a href="#">Customer Service</a>
+					</li>
+					<li>
+						<a href="#">Advertise With Us</a>
+					</li>
+					<li>
+						<a href="#">Terms of Service</a>
+					</li>
+					<li>
+						<a href="#">Privacy Policy</a>
+					</li>
+				</ul>
+				<p>© 1996-2013 National Geographic Society. All rights reserved</p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
